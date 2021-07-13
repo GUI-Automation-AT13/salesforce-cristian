@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.3'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
+    // https://mvnrepository.com/artifact/io.github.cdimascio/dotenv-java
+    implementation group: 'io.github.cdimascio', name: 'dotenv-java', version: '2.2.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+checkstyle {
+    toolVersion '8.44'
+    configFile file('config/checkstyle/checkstyle.xml')
+    checkstyleMain.source = "src/main/"
+    checkstyleMain.excludes = ["**/src/test/**"]
+}
+checkstyleMain {
+    source = 'src/main/java'
+}
+checkstyleTest {
+    source = 'src/test/java'
+}
+check.dependsOn build
+test.finalizedBy("checkstyleMain")
