@@ -1,12 +1,12 @@
 package salesforce.ui.pages;
 
-import org.openqa.selenium.WebDriver;
+import core.Manager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * This class return a instance of LoginPage.
+ * This class returns a instance of LoginPage.
  */
 public class LoginPage extends BasePage {
 
@@ -19,8 +19,8 @@ public class LoginPage extends BasePage {
     @FindBy(id = "Login")
     private WebElement loginButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(Manager manager) {
+        super(manager);
     }
 
     @Override
@@ -28,12 +28,14 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(loginButton));
     }
 
-    private void setUserName(final String userName) {
+    private LoginPage setUserName(final String userName) {
         userNameTextBox.sendKeys(userName);
+        return this;
     }
 
-    private void setPassword(final String password) {
+    private LoginPage setPassword(final String password) {
         passwordTextBox.sendKeys(password);
+        return this;
     }
 
     private void clickLoginButton() {
@@ -43,14 +45,15 @@ public class LoginPage extends BasePage {
     /**
      * Executes the login action.
      *
-     * @param userName .
-     * @param password .
-     * @return .
+     * @param userName is a param of user.
+     * @param password is a password of user.
+     * @return intance of HomePage object.
      */
     public HomePage loginSuccessful(final String userName, final String password) {
         setUserName(userName);
         setPassword(password);
         clickLoginButton();
-        return new HomePage(driver);
+        Manager manager = Manager.getInstance();
+        return new HomePage(manager);
     }
 }

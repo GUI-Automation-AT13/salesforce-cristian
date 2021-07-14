@@ -1,36 +1,23 @@
 package base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import core.Manager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import salesforce.ui.pages.LoginPage;
 
-/**
- * .
- */
 public class BaseTest {
 
-    private WebDriver driver;
+    protected WebDriver driver;
     protected LoginPage loginPage;
+    protected Manager manager;
 
-    /**
-     * .
-     */
     @BeforeClass
     public void setup() {
-        //        WebDriverManager.chromedriver().setup();
-        //        WebDriverManager.firefoxdriver().setup();
-        //        WebDriverManager.edgedriver().setup();
-        //        WebDriverManager.operadriver().setup();
-        //        WebDriverManager.phantomjs().setup();
-        //        WebDriverManager.iedriver().setup();
-        //        WebDriverManager.chromiumdriver().setup();
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        manager = Manager.getInstance();
+        driver = manager.getDriver();
         driver.get("https://login.salesforce.com/");
+        loginPage = new LoginPage(manager);
     }
 
     @AfterClass

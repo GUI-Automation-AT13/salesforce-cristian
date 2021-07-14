@@ -3,7 +3,7 @@ package core.utils;
 import static core.config.Configuration.dotenv;
 
 /**
- * This class Utils give enum with user and password.
+ * This class Utils gives enum with user and password.
  */
 public enum Utils {
     USER(dotenv.get("USER")),

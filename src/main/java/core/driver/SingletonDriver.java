@@ -3,7 +3,6 @@ package core.driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
@@ -25,10 +24,6 @@ public class SingletonDriver {
             if (browser.equals("FIREFOX")) {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
-            }
-            if (browser.equals("EDGE")) {
-                WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
             }
         }
         driver.manage().window().maximize();
