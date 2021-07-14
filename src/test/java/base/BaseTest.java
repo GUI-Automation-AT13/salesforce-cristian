@@ -1,5 +1,7 @@
 package base;
 
+import static core.config.Configuration.dotenv;
+
 import core.Manager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -16,7 +18,7 @@ public class BaseTest {
     public void setup() {
         manager = Manager.getInstance();
         driver = manager.getDriver();
-        driver.get("https://login.salesforce.com/");
+        driver.get(dotenv.get("URL_SALESFORCE"));
         loginPage = new LoginPage(manager);
     }
 
