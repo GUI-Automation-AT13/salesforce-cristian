@@ -41,6 +41,6 @@ gradle-app.setting
 hs_err_pid*
 .idea
 build
-gradlew
+#gradlew
 gradlew.bat
 settings.gradle
