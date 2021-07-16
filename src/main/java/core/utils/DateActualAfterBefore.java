@@ -3,8 +3,17 @@ package core.utils;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * This class is for convert string to date.
+ */
 public class DateActualAfterBefore {
 
+    /**
+     * Converts string to date.
+     *
+     * @param textDate is a text of date.
+     * @return a Date.
+     */
     public Calendar obtainDate(String textDate) {
         int sizeArray = getSizeArray(textDate);
         if (sizeArray == 1) {
@@ -19,10 +28,16 @@ public class DateActualAfterBefore {
         return null;
     }
 
+    /**
+     * Gets day month year second minute hour from now.
+     *
+     * @param textDate is a text of date.
+     * @return a Date.
+     */
     public Calendar getDmYsMhFuture(String textDate) {
         Date actualDate = new Date();
         String[] arrayTextDate = textDate.split(" ");
-        if (arrayTextDate[1].equals("days")  || arrayTextDate[1].equals("day")) {
+        if (arrayTextDate[1].equals("days") || arrayTextDate[1].equals("day")) {
             return addsSubsDays(actualDate, Integer.parseInt(arrayTextDate[0]));
         }
         if (arrayTextDate[1].equals("months") || arrayTextDate[1].equals("month")) {
@@ -31,7 +46,7 @@ public class DateActualAfterBefore {
         if (arrayTextDate[1].equals("years") || arrayTextDate[1].equals("year")) {
             return addsSubsYears(actualDate, Integer.parseInt(arrayTextDate[0]));
         }
-        if (arrayTextDate[1].equals("seconds")  || arrayTextDate[1].equals("second")) {
+        if (arrayTextDate[1].equals("seconds") || arrayTextDate[1].equals("second")) {
             return addsSubsSeconds(actualDate, Integer.parseInt(arrayTextDate[0]));
         }
         if (arrayTextDate[1].equals("minutes") || arrayTextDate[1].equals("minute")) {
@@ -43,10 +58,16 @@ public class DateActualAfterBefore {
         return null;
     }
 
+    /**
+     * Gets day month year second minute hour from ago.
+     *
+     * @param textDate is a text of date.
+     * @return a Date.
+     */
     public Calendar getDmYsMhAgo(String textDate) {
         Date actualDate = new Date();
         String[] arrayTextDate = textDate.split(" ");
-        if (arrayTextDate[1].equals("days")  || arrayTextDate[1].equals("day")) {
+        if (arrayTextDate[1].equals("days") || arrayTextDate[1].equals("day")) {
             return addsSubsDays(actualDate, -Integer.parseInt(arrayTextDate[0]));
         }
         if (arrayTextDate[1].equals("months") || arrayTextDate[1].equals("month")) {
@@ -55,7 +76,7 @@ public class DateActualAfterBefore {
         if (arrayTextDate[1].equals("years") || arrayTextDate[1].equals("year")) {
             return addsSubsYears(actualDate, -Integer.parseInt(arrayTextDate[0]));
         }
-        if (arrayTextDate[1].equals("seconds")  || arrayTextDate[1].equals("second")) {
+        if (arrayTextDate[1].equals("seconds") || arrayTextDate[1].equals("second")) {
             return addsSubsSeconds(actualDate, -Integer.parseInt(arrayTextDate[0]));
         }
         if (arrayTextDate[1].equals("minutes") || arrayTextDate[1].equals("minute")) {
@@ -67,11 +88,17 @@ public class DateActualAfterBefore {
         return null;
     }
 
+    /**
+     * Gets today yesterday tomorrow.
+     *
+     * @param textDate is a text of date.
+     * @return a Date.
+     */
     public Calendar getTodayYesterdayTomorrow(String textDate) {
+        final String[] arrayType = textDate.split("/");
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH, 1);
         Date actualDate = new Date();
-        String[] arrayType = textDate.split("/");
         if (textDate == "today") {
             return calendar;
         }
@@ -92,6 +119,13 @@ public class DateActualAfterBefore {
         return arrayType.length;
     }
 
+    /**
+     * Adds or substracts days.
+     *
+     * @param actualDate is a actual date.
+     * @param days       numbers do days.
+     * @return a date.
+     */
     public Calendar addsSubsDays(Date actualDate, int days) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
@@ -100,6 +134,13 @@ public class DateActualAfterBefore {
         return calendar;
     }
 
+    /**
+     * Adds or substracts months.
+     *
+     * @param actualDate is a actual date.
+     * @param months     numbers of months.
+     * @return a date.
+     */
     public Calendar addsSubsMonths(Date actualDate, int months) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
@@ -107,6 +148,13 @@ public class DateActualAfterBefore {
         return calendar;
     }
 
+    /**
+     * Adds or substracts years.
+     *
+     * @param actualDate is a actual date.
+     * @param years      is a numbers of the years.
+     * @return a date.
+     */
     public Calendar addsSubsYears(Date actualDate, int years) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
@@ -115,6 +163,13 @@ public class DateActualAfterBefore {
         return calendar;
     }
 
+    /**
+     * Adds or substract seconds.
+     *
+     * @param actualDate is a actual date.
+     * @param seconds    is a numbers of the seconds.
+     * @return a date.
+     */
     public Calendar addsSubsSeconds(Date actualDate, int seconds) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
@@ -123,6 +178,13 @@ public class DateActualAfterBefore {
         return calendar;
     }
 
+    /**
+     * Adds or substracts minutes.
+     *
+     * @param actualDate is a actual date.
+     * @param minutes    is a numbers of minutes.
+     * @return a date.
+     */
     public Calendar addsSubsMinutes(Date actualDate, int minutes) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
@@ -132,6 +194,13 @@ public class DateActualAfterBefore {
         return calendar;
     }
 
+    /**
+     * Adds or substracts hours.
+     *
+     * @param actualDate is a actual date.
+     * @param hours      is a numbers of the hours.
+     * @return a date.
+     */
     public Calendar addsSubsHours(Date actualDate, int hours) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
@@ -140,6 +209,12 @@ public class DateActualAfterBefore {
         return calendar;
     }
 
+    /**
+     * Converts string to date.
+     *
+     * @param setDate is text of the date.
+     * @return date.
+     */
     public Calendar convertStringToDate(String setDate) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Integer.parseInt(setDate.split("/")[2]),
