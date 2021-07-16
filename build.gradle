@@ -31,7 +31,7 @@ checkstyleMain {
     source = 'src/main/java'
 }
 checkstyleTest {
-    source = 'src/test/java'
+    source = 'src/main/java'
 }
 check.dependsOn build
 test.finalizedBy("checkstyleMain")
