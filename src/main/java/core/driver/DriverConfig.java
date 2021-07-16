@@ -2,8 +2,10 @@ package core.driver;
 
 import static core.config.Configuration.dotenv;
 
+import java.util.Properties;
+
 /**
- * This class is to choose the browser.
+ * Controls initializing of environment variables of webDriver.
  */
 public class DriverConfig {
     static DriverConfig driverConfig;
@@ -28,7 +30,7 @@ public class DriverConfig {
     }
 
     private void initialize() {
-        browser = dotenv.get("FIREFOX");
+        browser = dotenv.get("BROWSER_CHROME");
         implicitWaitTime = Integer.parseInt(dotenv.get("IMPLICIT_WAIT_TIME"));
         explicitWaitTime = Integer.parseInt(dotenv.get("EXPLICIT_WAIT_TIME"));
     }

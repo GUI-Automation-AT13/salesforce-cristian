@@ -1,15 +1,14 @@
 package salesforce.ui.pages;
 
-import core.Manager;
+import org.openqa.selenium.WebDriver;
 
 /**
- * This class returns a instance of HomePage.
+ * Load the home page.
  */
-public class HomePage extends BasePage {
-    public HomePage(final Manager manager) {
-        super(manager);
-    }
+public class HomePage {
+    protected WebDriver driver;
 
-    @Override
-    protected void waitForPageLoaded() {}
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+    }
 }

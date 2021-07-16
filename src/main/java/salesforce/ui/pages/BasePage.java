@@ -1,6 +1,8 @@
 package salesforce.ui.pages;
 
-import core.Manager;
+
+import core.driver.DriverManager;
+import core.driver.WebElementAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,15 +14,16 @@ public abstract class BasePage {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected WebElementAction webElementAction;
+    protected DriverManager driverManager;
 
     /**
-     * Method to Base page.
-     *
-     * @param manager is to manage driver.
+     * Initializes the elements and wait for page to be loaded.
      */
-    public BasePage(final Manager manager) {
-        this.driver = manager.getDriver();
-        wait = manager.getWait();
+    public BasePage() {
+        driverManager = DriverManager.getInstance();
+        driver = driverManager.getDriver();
+        webElementAction = new WebElementAction();
         PageFactory.initElements(driver, this);
         waitForPageLoaded();
     }

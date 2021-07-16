@@ -1,6 +1,6 @@
 package salesforce.ui.pages;
 
-import core.Manager;
+import core.driver.SingletonDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,49 +11,37 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class LoginPage extends BasePage {
 
     @FindBy(id = "username")
-    private WebElement userNameTextBox;
+    private WebElement userNameTxtBox;
 
     @FindBy(id = "password")
-    private WebElement passwordTextBox;
+    private WebElement passwordTxtBox;
 
     @FindBy(id = "Login")
-    private WebElement loginButton;
-
-    public LoginPage(Manager manager) {
-        super(manager);
-    }
+    private WebElement loginBtn;
 
     @Override
     protected void waitForPageLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(loginButton));
+        webElementAction.waitForVisibilityOfElement(loginBtn);
     }
 
-    private LoginPage setUserName(final String userName) {
-        userNameTextBox.sendKeys(userName);
+    public LoginPage setUserName(final String userName) {
+        webElementAction.setInputField(userNameTxtBox, userName);
         return this;
     }
 
-    private LoginPage setPassword(final String password) {
-        passwordTextBox.sendKeys(password);
-        return this;
-    }
 
-    private void clickLoginButton() {
-        loginButton.click();
+    public LoginPage setPassword(final String password) {
+        webElementAction.setInputField(passwordTxtBox, password);
+        return this;
     }
 
     /**
-     * Executes the login action.
+     * Clicks the login button.
      *
-     * @param userName is a param of user.
-     * @param password is a password of user.
-     * @return intance of HomePage object.
+     * @return A homePage.
      */
-    public HomePage loginSuccessful(final String userName, final String password) {
-        setUserName(userName);
-        setPassword(password);
-        clickLoginButton();
-        Manager manager = Manager.getInstance();
-        return new HomePage(manager);
+    public HomePage clickLoginBtn() {
+        loginBtn.click();
+        return new HomePage(driver);
     }
 }
