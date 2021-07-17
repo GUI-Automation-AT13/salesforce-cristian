@@ -8,6 +8,8 @@ import java.util.Date;
  */
 public class DateActualAfterBefore {
 
+    Calendar calendar = Calendar.getInstance();
+
     /**
      * Converts string to date.
      *
@@ -16,16 +18,20 @@ public class DateActualAfterBefore {
      */
     public Calendar obtainDate(String textDate) {
         int sizeArray = getSizeArray(textDate);
-        if (sizeArray == 1) {
-            return getTodayYesterdayTomorrow(textDate);
+        if (textDate.equals("")) {
+            throw new RuntimeException("Invalid Argument: Unsupported String Format.");
+        } else {
+            if (sizeArray == 1) {
+                return getTodayYesterdayTomorrow(textDate);
+            }
+            if (sizeArray == 3) {
+                return getDmYsMhAgo(textDate);
+            }
+            if (sizeArray == 4) {
+                return getDmYsMhFuture(textDate);
+            }
+            return null;
         }
-        if (sizeArray == 3) {
-            return getDmYsMhAgo(textDate);
-        }
-        if (sizeArray == 4) {
-            return getDmYsMhFuture(textDate);
-        }
-        return null;
     }
 
     /**
@@ -96,7 +102,6 @@ public class DateActualAfterBefore {
      */
     public Calendar getTodayYesterdayTomorrow(String textDate) {
         final String[] arrayType = textDate.split("/");
-        Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH, 1);
         Date actualDate = new Date();
         if (textDate == "today") {
@@ -127,7 +132,6 @@ public class DateActualAfterBefore {
      * @return a date.
      */
     public Calendar addsSubsDays(Date actualDate, int days) {
-        Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
         calendar.add(Calendar.MONTH, 1);
         calendar.add(Calendar.DAY_OF_MONTH, days);
@@ -142,7 +146,6 @@ public class DateActualAfterBefore {
      * @return a date.
      */
     public Calendar addsSubsMonths(Date actualDate, int months) {
-        Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
         calendar.add(Calendar.MONTH, months + 1);
         return calendar;
@@ -156,7 +159,6 @@ public class DateActualAfterBefore {
      * @return a date.
      */
     public Calendar addsSubsYears(Date actualDate, int years) {
-        Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
         calendar.add(Calendar.MONTH, 1);
         calendar.add(Calendar.YEAR, years);
@@ -171,7 +173,6 @@ public class DateActualAfterBefore {
      * @return a date.
      */
     public Calendar addsSubsSeconds(Date actualDate, int seconds) {
-        Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
         calendar.add(Calendar.MONTH, 1);
         calendar.add(Calendar.SECOND, seconds);
@@ -186,7 +187,6 @@ public class DateActualAfterBefore {
      * @return a date.
      */
     public Calendar addsSubsMinutes(Date actualDate, int minutes) {
-        Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
         calendar.add(Calendar.MONTH, 1);
         calendar.add(Calendar.MINUTE, -1);
@@ -202,7 +202,6 @@ public class DateActualAfterBefore {
      * @return a date.
      */
     public Calendar addsSubsHours(Date actualDate, int hours) {
-        Calendar calendar = Calendar.getInstance();
         calendar.setTime(actualDate);
         calendar.add(Calendar.MONTH, 1);
         calendar.add(Calendar.HOUR, hours);
@@ -216,7 +215,6 @@ public class DateActualAfterBefore {
      * @return date.
      */
     public Calendar convertStringToDate(String setDate) {
-        Calendar calendar = Calendar.getInstance();
         calendar.set(Integer.parseInt(setDate.split("/")[2]),
                 Integer.parseInt(setDate.split("/")[0]),
                 Integer.parseInt(setDate.split("/")[1]));
