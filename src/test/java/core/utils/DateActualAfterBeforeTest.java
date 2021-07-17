@@ -321,4 +321,26 @@ public class DateActualAfterBeforeTest {
         assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
         assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
     }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testEmptyStringDate() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "";
+        Calendar dateResult = dates.obtainDate(value);
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testNullValueDate() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = null;
+        Calendar dateResult = dates.obtainDate(value);
+    }
+
+    @Test
+    public void testInvalidStringDate() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "data String invalid 65465 654 klj ";
+        Calendar dateResult = dates.obtainDate(value);
+        assertEquals(dateResult, null, "Valid data");
+    }
 }

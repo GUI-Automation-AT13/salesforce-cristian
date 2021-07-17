@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'checkstyle'
+    id 'info.solidsoft.pitest' version '1.5.1'
 }
 
 group 'org.example'
@@ -15,6 +16,7 @@ dependencies {
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.3'
     testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
     implementation group: 'io.github.cdimascio', name: 'dotenv-java', version: '2.2.0'
+    implementation group: 'org.pitest', name: 'pitest', version: '1.6.7'
 }
 
 test {
@@ -27,6 +29,15 @@ checkstyle {
     checkstyleMain.source = "src/main/"
     checkstyleMain.excludes = ["**/src/test/**"]
 }
+
+pitest{
+    testPlugin = 'testng'
+    targetClasses = ['core.utils.DateActualAfterBefore']
+    targetTests = ['core.utils.DateActualAfterBeforeTest*']
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+}
+
 checkstyleMain {
     source = 'src/main/java'
 }
