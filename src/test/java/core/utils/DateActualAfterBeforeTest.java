@@ -1,9 +1,7 @@
 package core.utils;
 
 import org.testng.annotations.Test;
-
 import java.util.Calendar;
-
 import static org.testng.Assert.*;
 
 public class DateActualAfterBeforeTest {
@@ -107,6 +105,20 @@ public class DateActualAfterBeforeTest {
     }
 
     @Test
+    public void testObtainOneHourAgo() {
+        DateActualAfterBefore dateActualAfterBefore = new DateActualAfterBefore();
+        String textDate = "1 hour ago";
+        Calendar actual = dateActualAfterBefore.obtainDate(textDate);
+        Calendar expected = Calendar.getInstance();
+        expected.add(Calendar.MONTH, 1);
+        expected.add(Calendar.HOUR, - Integer.parseInt(textDate.split(" ")[0]));
+        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
+        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
+        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
+    }
+
+    @Test
     public void testObtainMinutesAgo() {
         DateActualAfterBefore dateActualAfterBefore = new DateActualAfterBefore();
         String textDate = "15 minutes ago";
@@ -180,6 +192,20 @@ public class DateActualAfterBeforeTest {
     public void testObtainHoursFuture() {
         DateActualAfterBefore dateActualAfterBefore = new DateActualAfterBefore();
         String textDate = "3 hours from now";
+        Calendar actual = dateActualAfterBefore.obtainDate(textDate);
+        Calendar expected = Calendar.getInstance();
+        expected.add(Calendar.MONTH, 1);
+        expected.add(Calendar.HOUR, Integer.parseInt(textDate.split(" ")[0]));
+        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
+        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
+        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
+    }
+
+    @Test
+    public void testObtainOneHourFuture() {
+        DateActualAfterBefore dateActualAfterBefore = new DateActualAfterBefore();
+        String textDate = "1 hour from now";
         Calendar actual = dateActualAfterBefore.obtainDate(textDate);
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
@@ -373,6 +399,72 @@ public class DateActualAfterBeforeTest {
         DateActualAfterBefore dates = new DateActualAfterBefore();
         String value = "data String invalid 65465 654 klj ";
         Calendar dateResult = dates.obtainDate(value);
+        assertEquals(dateResult, null, "Valid data");
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testEmptyStringDategetDmYsMhFuture() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "";
+        Calendar dateResult = dates.getDmYsMhFuture(value);
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testNullValueDategetDmYsMhFuture() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = null;
+        Calendar dateResult = dates.getDmYsMhFuture(value);
+    }
+
+    @Test
+    public void testInvalidStringDategetDmYsMhFuture() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "data String invalid 65465 654 klj ";
+        Calendar dateResult = dates.getDmYsMhFuture(value);
+        assertEquals(dateResult, null, "Valid data");
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testEmptyStringDategetDmYsMhAgo() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "";
+        Calendar dateResult = dates.getDmYsMhAgo(value);
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testNullValueDategetDmYsMhAgo() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = null;
+        Calendar dateResult = dates.getDmYsMhAgo(value);
+    }
+
+    @Test
+    public void testInvalidStringDategetDmYsMhAgo() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "data String invalid 65465 654 klj ";
+        Calendar dateResult = dates.getDmYsMhAgo(value);
+        assertEquals(dateResult, null, "Valid data");
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testEmptyStringDategetTodayYesterdayTomorrow() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "";
+        Calendar dateResult = dates.getTodayYesterdayTomorrow(value);
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testNullValueDategetTodayYesterdayTomorrow() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = null;
+        Calendar dateResult = dates.getTodayYesterdayTomorrow(value);
+    }
+
+    @Test
+    public void testInvalidStringDategetTodayYesterdayTomorrow() {
+        DateActualAfterBefore dates = new DateActualAfterBefore();
+        String value = "data String invalid 65465 654 klj ";
+        Calendar dateResult = dates.getTodayYesterdayTomorrow(value);
         assertEquals(dateResult, null, "Valid data");
     }
 }
