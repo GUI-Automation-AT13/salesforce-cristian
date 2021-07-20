@@ -23,6 +23,7 @@ public abstract class BasePage {
     public BasePage() {
         driverManager = DriverManager.getInstance();
         driver = driverManager.getDriver();
+        wait = driverManager.getWait();
         webElementAction = new WebElementAction();
         PageFactory.initElements(driver, this);
         waitForPageLoaded();

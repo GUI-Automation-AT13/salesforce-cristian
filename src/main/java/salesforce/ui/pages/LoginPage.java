@@ -23,13 +23,13 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage setUserName(final String userName) {
-        webElementAction.setInputField(userNameTxtBox, userName);
+        webElementAction.setTextInputField(userNameTxtBox, userName);
         return this;
     }
 
 
     public LoginPage setPassword(final String password) {
-        webElementAction.setInputField(passwordTxtBox, password);
+        webElementAction.setTextInputField(passwordTxtBox, password);
         return this;
     }
 

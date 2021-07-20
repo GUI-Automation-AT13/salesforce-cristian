@@ -1,14 +1,12 @@
 package base;
 
-import static core.config.Configuration.dotenv;
-
 import core.driver.DriverManager;
-import core.driver.SingletonDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import salesforce.ui.PageTransporter;
 import salesforce.ui.pages.LoginPage;
+//import salesforce.ui.pagesjp.LoginPage;
 
 public class BaseTest {
 
