@@ -1,11 +1,9 @@
 package login;
 
 import static core.config.Configuration.dotenv;
-
 import base.BaseTest;
 import org.testng.annotations.Test;
 import salesforce.ui.pages.HomePage;
-//import salesforce.ui.pagesjp.HomePage;
 
 public class LoginTest extends BaseTest {
 

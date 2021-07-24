@@ -6,10 +6,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import salesforce.ui.PageTransporter;
 import salesforce.ui.pages.LoginPage;
-//import salesforce.ui.pagesjp.LoginPage;
 
 public class BaseTest {
-
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected DriverManager driverManager;
