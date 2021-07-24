@@ -42,10 +42,20 @@ public class DriverManager {
         driver = DriverSelector.select(driverConfig.getBrowser());
     }
 
+    /**
+     * Returns a driver.
+     *
+     * @return driver.
+     */
     public WebDriver getDriver() {
         return driver;
     }
 
+    /**
+     * Returns a wait.
+     *
+     * @return a wait.
+     */
     public WebDriverWait getWait() {
         return wait;
     }

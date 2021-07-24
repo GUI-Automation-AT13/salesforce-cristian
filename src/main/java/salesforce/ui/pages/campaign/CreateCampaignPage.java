@@ -1,5 +1,7 @@
 package salesforce.ui.pages.campaign;
 
+import java.util.HashMap;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import salesforce.ui.pages.BasePage;
@@ -61,19 +63,43 @@ public class CreateCampaignPage extends BasePage {
         super();
     }
 
+    private static final String INPUT_XPATH = "//label/span[text()='%s']/../..//input";
+
+    private static final HashMap<String, String> inputFieldNames = new HashMap<>();
+
+    static {
+        inputFieldNames.put("campaign name", "Campaign Name");
+        inputFieldNames.put("start date", "Start Date");
+        inputFieldNames.put("end date", "End Date");
+        inputFieldNames.put("expected revenue in campaign", "Expected Revenue in Campaign");
+        inputFieldNames.put("budgeted cost in campaign", "Budgeted Cost in Campaign");
+        inputFieldNames.put("actual cost in campaign", "Actual Cost in Campaign");
+        inputFieldNames.put("num sent in campaign", "Num Sent in Campaign");
+    }
+
     @Override
     protected void waitForPageLoaded() {
         webElementAction.waitForVisibilityOfElement(saveButton);
+        webElementAction.waitForVisibilityOfElement(campaignNameTextBox);
+        webElementAction.waitForVisibilityOfElement(startDateTextBox);
+        webElementAction.waitForVisibilityOfElement(endDateTextBox);
+        webElementAction.waitForVisibilityOfElement(expectedRevenueInCampaignTextBox);
+        webElementAction.waitForVisibilityOfElement(budgetedCostInCampaignTextBox);
+        webElementAction.waitForVisibilityOfElement(actualCostInCampaignTextBox);
+        webElementAction.waitForVisibilityOfElement(numSentInCampaignTextBox);
+        webElementAction.waitForVisibilityOfElement(descriptionTextArea);
     }
 
     /**
-     * Sets campaign name element.
+     * Sets the inputs fields.
      *
-     * @param campaignName is a element.
-     * @return this class.
+     * @param fieldName the name field to set.
+     * @param value     the value of the field.
+     * @return a this object.
      */
-    public CreateCampaignPage setCampaignName(final String campaignName) {
-        webElementAction.setTextInputField(campaignNameTextBox, campaignName);
+    public CreateCampaignPage setInputField(final String fieldName, final String value) {
+        webElementAction.setTextInputField(driver.findElement(By.xpath(
+                String.format(INPUT_XPATH, inputFieldNames.get(fieldName)))), value);
         return this;
     }
 
@@ -99,61 +125,6 @@ public class CreateCampaignPage extends BasePage {
     }
 
     /**
-     * Sets startDate element.
-     *
-     * @param startDate is a start date of new campaign.
-     * @return this class.
-     */
-    public CreateCampaignPage setStartDate(final String startDate) {
-        webElementAction.setTextInputField(startDateTextBox, startDate);
-        return this;
-    }
-
-    /**
-     * Sets endDate element.
-     *
-     * @param endDate is a end date of new campaign.
-     * @return this class.
-     */
-    public CreateCampaignPage setEndDate(final String endDate) {
-        webElementAction.setTextInputField(endDateTextBox, endDate);
-        return this;
-    }
-
-    /**
-     * Sets expected revenue element.
-     *
-     * @param expectedRevenue is a expected revenue of new campaign.
-     * @return this class.
-     */
-    public CreateCampaignPage setExpectedRevenueCampaign(final String expectedRevenue) {
-        webElementAction.setTextInputField(expectedRevenueInCampaignTextBox, expectedRevenue);
-        return this;
-    }
-
-    /**
-     * Sets budget cost element.
-     *
-     * @param budgetedCost is a budgeted cost of new campaign.
-     * @return this class.
-     */
-    public CreateCampaignPage setBudgetedCost(final String budgetedCost) {
-        webElementAction.setTextInputField(budgetedCostInCampaignTextBox, budgetedCost);
-        return this;
-    }
-
-    /**
-     * Sets actual cost element.
-     *
-     * @param actualCost is a actual cost of new campaign.
-     * @return this class.
-     */
-    public CreateCampaignPage setActualCost(final String actualCost) {
-        webElementAction.setTextInputField(actualCostInCampaignTextBox, actualCost);
-        return this;
-    }
-
-    /**
      * Sets Expected response element.
      *
      * @param expectedResponse is a expected response of new campaign.
@@ -161,17 +132,6 @@ public class CreateCampaignPage extends BasePage {
      */
     public CreateCampaignPage setExpectedResponse(final String expectedResponse) {
         webElementAction.setTextInputField(expectedResponseTextBox, expectedResponse);
-        return this;
-    }
-
-    /**
-     * Sets num sent campaign element.
-     *
-     * @param numSentCampaign is a num sent campaign of new campaign.
-     * @return this class.
-     */
-    public CreateCampaignPage setNumSentCampaign(final String numSentCampaign) {
-        webElementAction.setTextInputField(numSentInCampaignTextBox, numSentCampaign);
         return this;
     }
 
