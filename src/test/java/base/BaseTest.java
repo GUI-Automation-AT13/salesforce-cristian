@@ -1,29 +1,27 @@
 package base;
 
-import static core.config.Configuration.dotenv;
-
-import core.Manager;
+import core.driver.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import salesforce.ui.PageTransporter;
 import salesforce.ui.pages.LoginPage;
 
 public class BaseTest {
-
     protected WebDriver driver;
     protected LoginPage loginPage;
-    protected Manager manager;
+    protected DriverManager driverManager;
+    protected PageTransporter pageTransporter;
 
     @BeforeClass
-    public void setup() {
-        manager = Manager.getInstance();
-        driver = manager.getDriver();
-        driver.get(dotenv.get("URL_SALESFORCE"));
-        loginPage = new LoginPage(manager);
+    public void init() {
+        driverManager = DriverManager.getInstance();
+        pageTransporter = new PageTransporter();
+        loginPage = pageTransporter.navigateToLoginPage();
     }
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+        DriverManager.getInstance().getDriver().quit();
     }
 }

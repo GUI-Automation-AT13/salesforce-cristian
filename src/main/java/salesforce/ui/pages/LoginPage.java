@@ -1,9 +1,7 @@
 package salesforce.ui.pages;
 
-import core.Manager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * This class returns a instance of LoginPage.
@@ -11,49 +9,48 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class LoginPage extends BasePage {
 
     @FindBy(id = "username")
-    private WebElement userNameTextBox;
+    private WebElement userNameTxtBox;
 
     @FindBy(id = "password")
-    private WebElement passwordTextBox;
+    private WebElement passwordTxtBox;
 
     @FindBy(id = "Login")
-    private WebElement loginButton;
-
-    public LoginPage(Manager manager) {
-        super(manager);
-    }
+    private WebElement loginBtn;
 
     @Override
     protected void waitForPageLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(loginButton));
-    }
-
-    private LoginPage setUserName(final String userName) {
-        userNameTextBox.sendKeys(userName);
-        return this;
-    }
-
-    private LoginPage setPassword(final String password) {
-        passwordTextBox.sendKeys(password);
-        return this;
-    }
-
-    private void clickLoginButton() {
-        loginButton.click();
+        webElementAction.waitForVisibilityOfElement(loginBtn);
     }
 
     /**
-     * Executes the login action.
+     * Sets user name of credentials.
      *
-     * @param userName is a param of user.
-     * @param password is a password of user.
-     * @return intance of HomePage object.
+     * @param userName is a parameter for login.
+     * @return this Object.
      */
-    public HomePage loginSuccessful(final String userName, final String password) {
-        setUserName(userName);
-        setPassword(password);
-        clickLoginButton();
-        Manager manager = Manager.getInstance();
-        return new HomePage(manager);
+    public LoginPage setUserName(final String userName) {
+        webElementAction.setTextInputField(userNameTxtBox, userName);
+        return this;
+    }
+
+    /**
+     * Sets password of credentials.
+     *
+     * @param password is a parameter for login.
+     * @return this Object.
+     */
+    public LoginPage setPassword(final String password) {
+        webElementAction.setTextInputField(passwordTxtBox, password);
+        return this;
+    }
+
+    /**
+     * Clicks the login button.
+     *
+     * @return A homePage.
+     */
+    public HomePage clickLoginBtn() {
+        loginBtn.click();
+        return new HomePage(driver);
     }
 }

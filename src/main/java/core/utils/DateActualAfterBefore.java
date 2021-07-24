@@ -8,6 +8,9 @@ import java.util.Calendar;
 public class DateActualAfterBefore {
 
     Calendar calendar = Calendar.getInstance();
+    final int numberFour = 4;
+    final int numberThree = 3;
+    final int numberOne = 1;
 
     /**
      * Converts string to date.
@@ -20,13 +23,13 @@ public class DateActualAfterBefore {
         if (textDate.equals("")) {
             throw new RuntimeException("Invalid Argument: Unsupported String Format.");
         } else {
-            if (sizeArray == 1) {
+            if (sizeArray == numberOne) {
                 return getTodayYesterdayTomorrow(textDate);
             }
-            if (sizeArray == 3) {
+            if (sizeArray == numberThree) {
                 return getDmYsMhAgo(textDate);
             }
-            if (sizeArray == 4) {
+            if (sizeArray == numberFour) {
                 return getDmYsMhFuture(textDate);
             }
         }
@@ -120,7 +123,7 @@ public class DateActualAfterBefore {
             if (textDate == "yesterday") {
                 return addsSubsDays(-1);
             }
-            if (arrayType.length == 3) {
+            if (arrayType.length == numberThree) {
                 return convertStringToDate("7/14/2021");
             }
         }
@@ -217,5 +220,3 @@ public class DateActualAfterBefore {
         return calendar;
     }
 }
-
-

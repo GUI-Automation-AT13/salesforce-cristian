@@ -1,5 +1,6 @@
-package core.utils;
+package test.core.utils;
 
+import core.utils.DateActualAfterBefore;
 import org.testng.annotations.Test;
 import java.util.Calendar;
 import static org.testng.Assert.*;
@@ -11,10 +12,10 @@ public class DateActualAfterBeforeTest {
         DateActualAfterBefore dateActualAfterBefore = new DateActualAfterBefore();
         Calendar actual = dateActualAfterBefore.obtainDate("today");
         Calendar expected = Calendar.getInstance();
+        System.out.println(expected.getTime());
+        System.out.println(expected.get(Calendar.MILLISECOND));
         expected.add(Calendar.MONTH, 1);
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -24,9 +25,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.DAY_OF_MONTH, 1);
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -36,16 +35,24 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.DAY_OF_MONTH, -1);
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
     public void testObtainDateDate() {
         DateActualAfterBefore dateActualAfterBefore = new DateActualAfterBefore();
         String setDate = "7/14/2021";
-        Calendar actual = dateActualAfterBefore.obtainDate("7/14/2021");
+        Calendar actual = dateActualAfterBefore.obtainDate(setDate);
+        assertEquals(actual.get(Calendar.YEAR), Integer.parseInt(setDate.split("/")[2]));
+        assertEquals(actual.get(Calendar.MONTH), Integer.parseInt(setDate.split("/")[0]));
+        assertEquals(actual.get(Calendar.DAY_OF_MONTH), Integer.parseInt(setDate.split("/")[1]));
+    }
+
+    @Test
+    public void testObtainDateDate2() {
+        DateActualAfterBefore dateActualAfterBefore = new DateActualAfterBefore();
+        String setDate = "0007/0014/2021";
+        Calendar actual = dateActualAfterBefore.obtainDate(setDate);
         assertEquals(actual.get(Calendar.YEAR), Integer.parseInt(setDate.split("/")[2]));
         assertEquals(actual.get(Calendar.MONTH), Integer.parseInt(setDate.split("/")[0]));
         assertEquals(actual.get(Calendar.DAY_OF_MONTH), Integer.parseInt(setDate.split("/")[1]));
@@ -59,9 +66,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.DAY_OF_MONTH, - Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -72,9 +77,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.MONTH, - Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -85,9 +88,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.YEAR, - Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -98,10 +99,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.HOUR, - Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
-        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -126,11 +124,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.MINUTE, - Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
-        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
-        assertEquals(actual.get(Calendar.MINUTE), expected.get(Calendar.MINUTE));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -141,12 +135,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.SECOND, - Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
-        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
-        assertEquals(actual.get(Calendar.MINUTE), expected.get(Calendar.MINUTE));
-        assertEquals(actual.get(Calendar.SECOND), expected.get(Calendar.SECOND));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -157,9 +146,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.DAY_OF_MONTH, Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -170,9 +157,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.MONTH, Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -183,9 +168,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.YEAR, Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -196,10 +179,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.HOUR, Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
-        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -224,11 +204,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.MINUTE, Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
-        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
-        assertEquals(actual.get(Calendar.MINUTE), expected.get(Calendar.MINUTE));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
@@ -239,12 +215,7 @@ public class DateActualAfterBeforeTest {
         Calendar expected = Calendar.getInstance();
         expected.add(Calendar.MONTH, 1);
         expected.add(Calendar.SECOND, Integer.parseInt(textDate.split(" ")[0]));
-        assertEquals(actual.get(Calendar.YEAR), expected.get(Calendar.YEAR));
-        assertEquals(actual.get(Calendar.MONTH), expected.get(Calendar.MONTH));
-        assertEquals(actual.get(Calendar.DAY_OF_MONTH), expected.get(Calendar.DAY_OF_MONTH));
-        assertEquals(actual.get(Calendar.HOUR), expected.get(Calendar.HOUR));
-        assertEquals(actual.get(Calendar.MINUTE), expected.get(Calendar.MINUTE));
-        assertEquals(actual.get(Calendar.SECOND), expected.get(Calendar.SECOND));
+        assertEquals(actual.getTime().toString(), expected.getTime().toString());
     }
 
     @Test
