@@ -23,5 +23,4 @@ public enum Utils {
     public String toName() {
         return name;
     }
-
 }

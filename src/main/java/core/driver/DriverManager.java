@@ -1,7 +1,5 @@
 package core.driver;
 
-import static core.config.Configuration.dotenv;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
 import org.openqa.selenium.WebDriver;
@@ -35,17 +33,20 @@ public class DriverManager {
         return driverManager;
     }
 
+    /**
+     * Initializes the web driver.
+     */
+    private void setDriverManagerType() {
+        DriverManagerType driverManagerType = DriverManagerType.valueOf(driverConfig.getBrowser());
+        WebDriverManager.getInstance(driverManagerType).setup();
+        driver = DriverSelector.select(driverConfig.getBrowser());
+    }
+
     public WebDriver getDriver() {
         return driver;
     }
 
     public WebDriverWait getWait() {
         return wait;
-    }
-
-    private void setDriverManagerType() {
-        DriverManagerType driverManagerType = DriverManagerType.valueOf(driverConfig.getBrowser());
-        WebDriverManager.getInstance(driverManagerType).setup();
-        driver = DriverSelector.select(driverConfig.getBrowser());
     }
 }

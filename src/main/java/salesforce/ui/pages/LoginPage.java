@@ -22,12 +22,23 @@ public class LoginPage extends BasePage {
         webElementAction.waitForVisibilityOfElement(loginBtn);
     }
 
+    /**
+     * Sets user name of credentials.
+     *
+     * @param userName is a parameter for login.
+     * @return this Object.
+     */
     public LoginPage setUserName(final String userName) {
         webElementAction.setTextInputField(userNameTxtBox, userName);
         return this;
     }
 
-
+    /**
+     * Sets password of credentials.
+     *
+     * @param password is a parameter for login.
+     * @return this Object.
+     */
     public LoginPage setPassword(final String password) {
         webElementAction.setTextInputField(passwordTxtBox, password);
         return this;

@@ -33,6 +33,4 @@ public class CampaignsPage extends BasePage {
         newBtn.click();
         return new CreateCampaignPage();
     }
-
-
 }

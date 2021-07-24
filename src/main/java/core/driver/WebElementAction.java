@@ -1,5 +1,7 @@
 package core.driver;
 
+import static core.config.Configuration.dotenv;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +17,7 @@ public class WebElementAction {
 
     public WebElementAction() {
         driver = DriverManager.getInstance().getDriver();
-        wait = new WebDriverWait(driver, 30);
+        wait = new WebDriverWait(driver, Integer.parseInt(dotenv.get("IMPLICIT_WAIT_TIME")));
     }
 
     /**

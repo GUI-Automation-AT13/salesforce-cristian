@@ -1,6 +1,5 @@
 package salesforce.ui.pages;
 
-
 import core.driver.DriverManager;
 import core.driver.WebElementAction;
 import org.openqa.selenium.WebDriver;
@@ -30,5 +29,4 @@ public abstract class BasePage {
     }
 
     protected abstract void waitForPageLoaded();
-
 }

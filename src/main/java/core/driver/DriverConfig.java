@@ -2,8 +2,6 @@ package core.driver;
 
 import static core.config.Configuration.dotenv;
 
-import java.util.Properties;
-
 /**
  * Controls initializing of environment variables of webDriver.
  */

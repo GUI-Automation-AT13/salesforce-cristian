@@ -2,11 +2,10 @@ package salesforce.ui.pages.campaign;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.BasePage;
 
 /**
- * .
+ * This class is for create a new Campaign element.
  */
 public class CreateCampaignPage extends BasePage {
 
@@ -52,10 +51,10 @@ public class CreateCampaignPage extends BasePage {
     @FindBy(xpath = "//button[@title=\'Save\']")
     private WebElement saveButton;
 
-    @FindBy(xpath = "//button[@title=\'Save\']")
+    @FindBy(xpath = "//button[@title='Save & New']")
     private WebElement saveAndNewButton;
 
-    @FindBy(xpath = "//button[@title=\'Save\']")
+    @FindBy(xpath = "//button[@title='Cancel']")
     private WebElement cancelButton;
 
     public CreateCampaignPage() {
@@ -64,70 +63,136 @@ public class CreateCampaignPage extends BasePage {
 
     @Override
     protected void waitForPageLoaded() {
-        //wait.until(ExpectedConditions.visibilityOf(saveButton));
         webElementAction.waitForVisibilityOfElement(saveButton);
     }
 
+    /**
+     * Sets campaign name element.
+     *
+     * @param campaignName is a element.
+     * @return this class.
+     */
     public CreateCampaignPage setCampaignName(final String campaignName) {
         webElementAction.setTextInputField(campaignNameTextBox, campaignName);
         return this;
     }
 
+    /**
+     * Clicks active check element.
+     */
     public void clickActive() {
         activeCheck.click();
     }
 
+    /**
+     * Clicks type combobox element.
+     */
     public void clickType() {
-        statusComboBox.click();
+        typeComboBox.click();
     }
 
+    /**
+     * Clicks status combobox element.
+     */
     public void clickStatus() {
         statusComboBox.click();
     }
 
+    /**
+     * Sets startDate element.
+     *
+     * @param startDate is a start date of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setStartDate(final String startDate) {
         webElementAction.setTextInputField(startDateTextBox, startDate);
         return this;
     }
 
+    /**
+     * Sets endDate element.
+     *
+     * @param endDate is a end date of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setEndDate(final String endDate) {
         webElementAction.setTextInputField(endDateTextBox, endDate);
         return this;
     }
 
+    /**
+     * Sets expected revenue element.
+     *
+     * @param expectedRevenue is a expected revenue of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setExpectedRevenueCampaign(final String expectedRevenue) {
         webElementAction.setTextInputField(expectedRevenueInCampaignTextBox, expectedRevenue);
         return this;
     }
 
+    /**
+     * Sets budget cost element.
+     *
+     * @param budgetedCost is a budgeted cost of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setBudgetedCost(final String budgetedCost) {
         webElementAction.setTextInputField(budgetedCostInCampaignTextBox, budgetedCost);
         return this;
     }
 
+    /**
+     * Sets actual cost element.
+     *
+     * @param actualCost is a actual cost of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setActualCost(final String actualCost) {
         webElementAction.setTextInputField(actualCostInCampaignTextBox, actualCost);
         return this;
     }
 
+    /**
+     * Sets Expected response element.
+     *
+     * @param expectedResponse is a expected response of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setExpectedResponse(final String expectedResponse) {
         webElementAction.setTextInputField(expectedResponseTextBox, expectedResponse);
         return this;
     }
 
+    /**
+     * Sets num sent campaign element.
+     *
+     * @param numSentCampaign is a num sent campaign of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setNumSentCampaign(final String numSentCampaign) {
         webElementAction.setTextInputField(numSentInCampaignTextBox, numSentCampaign);
         return this;
     }
 
+    /**
+     * Sets description element.
+     *
+     * @param description is a description of new campaign.
+     * @return this class.
+     */
     public CreateCampaignPage setDescription(final String description) {
         webElementAction.setTextInputField(descriptionTextArea, description);
         return this;
     }
 
+    /**
+     * Returns a page of Campaign created.
+     *
+     * @return Object of new CampaignCreatedPage.
+     */
     public CampaignCreatedPage clickSaveBtn() {
         saveButton.click();
         return new CampaignCreatedPage();
     }
-
 }
