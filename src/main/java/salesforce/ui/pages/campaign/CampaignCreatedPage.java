@@ -54,11 +54,6 @@ public class CampaignCreatedPage extends BasePage implements CreatedFeature {
         return webElementAction.getTextOfByFieldByLocator(xpathLocator);
     }
 
-    public MenuPage clickCreatedCampaignOptionBtn() {
-        webElementAction.clickByLocator(createdCampaignOptionBtn);
-        return new MenuPage();
-    }
-
     @Override
     protected void waitForPageLoaded() {
         webElementAction.waitForVisibilityOfElement(alertSuccess);

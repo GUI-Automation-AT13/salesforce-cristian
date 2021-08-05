@@ -33,13 +33,6 @@ public class CampaignSteps {
         this.pageTransporter = pageTransporter;
     }
 
-    @Given("I login to salesforce site as an developer user")
-    public void iLoginToSalesforceSiteAsAnDeveloperUser() {
-        loginPage = pageTransporter.navigateToLoginPage();
-        HomePage homePage = loginPage.setUserName(dotenv.get("SALESFORCE_USERNAME"))
-                .setPassword(dotenv.get("PASSWORD_TOKEN")).clickLoginBtn();
-    }
-
     @And("I navigate to Campaign page")
     public void iNavigateToCampaignPage() {
         pageTransporter.navigateToCampaignPage();
@@ -47,8 +40,6 @@ public class CampaignSteps {
 
     @And("I navigate to {string} page")
     public void iNavigateToPage(String arg0) {
-        System.out.println("----------------------");
-        System.out.println(arg0);
         campaignPage = pageTransporter.navigateTofeaturePage(arg0);
     }
 

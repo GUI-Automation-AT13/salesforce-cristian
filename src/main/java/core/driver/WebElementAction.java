@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * This class if for actions of web elements.
  */
 public class WebElementAction {
-
     private WebDriver driver;
     private WebDriverWait wait;
 

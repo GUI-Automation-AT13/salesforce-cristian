@@ -12,11 +12,10 @@ import salesforce.utils.supplier.VoidSupplier;
 /**
  * This class is for create a new Campaign element.
  */
-public class CreateCampaignPage extends BasePage implements FeatureNew {
+public class FormToCreateCampaign extends BasePage implements FeatureNew {
 
     @FindBy(xpath = "//label/span[text()=\"Campaign Name\"]/../..//input")
     private WebElement campaignNameTextBox;
-
     @FindBy(xpath = "//label/span[text()=\"Active\"]/../..//input")
     private WebElement activeCheck;
 
@@ -62,7 +61,7 @@ public class CreateCampaignPage extends BasePage implements FeatureNew {
     @FindBy(xpath = "//button[@title='Cancel']")
     private WebElement cancelButton;
 
-    public CreateCampaignPage() {
+    public FormToCreateCampaign() {
         super();
     }
 
@@ -78,6 +77,7 @@ public class CreateCampaignPage extends BasePage implements FeatureNew {
         inputFieldNames.put("Budgeted Cost in Campaign", "Budgeted Cost in Campaign");
         inputFieldNames.put("Actual Cost in Campaign", "Actual Cost in Campaign");
         inputFieldNames.put("Num Sent in Campaign", "Num Sent in Campaign");
+        inputFieldNames.put("Description", "Description");
     }
 
     @Override
@@ -100,7 +100,7 @@ public class CreateCampaignPage extends BasePage implements FeatureNew {
      * @param value     the value of the field.
      * @return a this object.
      */
-    public CreateCampaignPage setInputField(final String fieldName, final String value) {
+    public FormToCreateCampaign setInputField(final String fieldName, final String value) {
         webElementAction.setTextInputField(driver.findElement(By.xpath(
                 String.format(INPUT_XPATH, inputFieldNames.get(fieldName)))), value);
         return this;
@@ -133,7 +133,7 @@ public class CreateCampaignPage extends BasePage implements FeatureNew {
      * @param expectedResponse is a expected response of new campaign.
      * @return this class.
      */
-    public CreateCampaignPage setExpectedResponse(final String expectedResponse) {
+    public FormToCreateCampaign setExpectedResponse(final String expectedResponse) {
         webElementAction.setTextInputField(expectedResponseTextBox, expectedResponse);
         return this;
     }
@@ -144,7 +144,7 @@ public class CreateCampaignPage extends BasePage implements FeatureNew {
      * @param description is a description of new campaign.
      * @return this class.
      */
-    public CreateCampaignPage setDescription(final String description) {
+    public FormToCreateCampaign setDescription(final String description) {
         webElementAction.setTextInputField(descriptionTextArea, description);
         return this;
     }
@@ -161,7 +161,7 @@ public class CreateCampaignPage extends BasePage implements FeatureNew {
 
     @Override
     public void fillUpField(Map<String, String> table) {
-        HashMap<String, VoidSupplier> actionsContractMap = mapActionsContract(table);
+        HashMap<String, VoidSupplier> actionsContractMap = mapActionsCampaign(table);
         table.keySet().forEach(key -> actionsContractMap.get(key).run());
     }
 
@@ -177,7 +177,7 @@ public class CreateCampaignPage extends BasePage implements FeatureNew {
      * @param campaignMap is map
      * @return a map with action of fields
      */
-    private HashMap<String, VoidSupplier> mapActionsContract(final Map<String, String> campaignMap) {
+    private HashMap<String, VoidSupplier> mapActionsCampaign(final Map<String, String> campaignMap) {
         HashMap<String, VoidSupplier> mapActions = new HashMap<>();
         mapActions.put("Campaign Name", () -> setInputField(
                 "Campaign Name",
