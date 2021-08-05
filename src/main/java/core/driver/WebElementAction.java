@@ -2,6 +2,8 @@ package core.driver;
 
 import static core.config.Configuration.dotenv;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -69,5 +71,53 @@ public class WebElementAction {
     public String getTextOfElement(final WebElement webElement) {
         wait.until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
+    }
+
+    /**
+     * Selects a webElement isn't able to click.
+     *
+     * @param locator type WebElement object.
+     */
+    public void clickByLocator(final By locator) {
+        waitForVisibilityOfLocator(locator);
+        driver.findElement(locator).click();
+    }
+
+    /**
+     * Returns a Web Element out of a By selector.
+     *
+     * @param locator represents a selector
+     * @return WebElement
+     */
+    public WebElement getElement(final By locator) {
+        return driver.findElement(locator);
+    }
+
+    /**
+     * Selects a webElement isn't able to click.
+     *
+     * @param locator type WebElement object.
+     */
+    public void waitForVisibilityOfLocator(final By locator) {
+        wait.until(ExpectedConditions.visibilityOf(getElement(locator)));
+    }
+
+    /**
+     * Scrolls to the end of the page.
+     */
+    public void dropDownTillTheEnd() {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,250)");
+    }
+
+    /**
+     * Gets the text of a web element.
+     *
+     * @param locator web element to get text.
+     * @return web element's text
+     */
+    public String getTextOfByFieldByLocator(final By locator) {
+        waitForVisibilityOfLocator(locator);
+        return driver.findElement(locator).getText();
     }
 }

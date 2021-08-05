@@ -9,12 +9,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Controls initializing of webDriver and webDriverWait.
  */
 public class DriverManager {
-    static DriverManager driverManager;
+    private static DriverManager driverManager;
     private WebDriver driver;
     private WebDriverWait wait;
     private DriverConfig driverConfig;
 
-    private DriverManager() {
+    /**
+     * Constructor of driver manager.
+     */
+    public DriverManager() {
         driverConfig = DriverConfig.getInstance();
         setDriverManagerType();
         wait = new WebDriverWait(driver, driverConfig.getExplicitWaitTime());

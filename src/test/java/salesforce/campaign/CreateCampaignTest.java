@@ -1,6 +1,6 @@
-package campaign;
+package salesforce.campaign;
 
-import base.BaseTest;
+import salesforce.base.BaseTest;
 import org.testng.Assert;
 import salesforce.ui.pages.HomePage;
 import salesforce.ui.pages.campaign.CampaignCreatedPage;
@@ -18,8 +18,12 @@ public class CreateCampaignTest extends BaseTest {
     @Test
     public void testCreateCampaignWithNecesaryAttributes() {
         String campaignName = "New Campaign Created";
-        HomePage homePage = loginPage.setUserName(dotenv.get("USER"))
-                .setPassword(dotenv.get("PASSWORD")).clickLoginBtn();
+        HomePage homePage = loginPage.setUserName(dotenv.get("SALESFORCE_USERNAME"))
+                .setPassword(dotenv.get("PASSWORD_TOKEN")).clickLoginBtn();
+
+//        System.out.println("****************************");
+////        System.out.println(driver.getCurrentUrl());
+//        System.out.println(driverManager.getDriver().getCurrentUrl());
         campaignPage = pageTransporter.navigateToCampaignPage();
         CreateCampaignPage createCampaignPage = campaignPage.clickCreateCampaignBtn();
         createCampaignPage.setInputField("campaign name", campaignName);
@@ -42,8 +46,8 @@ public class CreateCampaignTest extends BaseTest {
         String actualCost = "180";
         String numSent = "100";
         String description = "Description added";
-        HomePage homePage = loginPage.setUserName(dotenv.get("USER"))
-                .setPassword(dotenv.get("PASSWORD")).clickLoginBtn();
+        HomePage homePage = loginPage.setUserName(dotenv.get("SALESFORCE_USERNAME"))
+                .setPassword(dotenv.get("PASSWORD_TOKEN")).clickLoginBtn();
         campaignPage = pageTransporter.navigateToCampaignPage();
         CreateCampaignPage createCampaignPage = campaignPage.clickCreateCampaignBtn();
         createCampaignPage.setInputField("campaign name", campaignName);

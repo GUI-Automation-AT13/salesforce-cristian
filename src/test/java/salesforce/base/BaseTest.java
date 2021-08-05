@@ -1,4 +1,4 @@
-package base;
+package salesforce.base;
 
 import core.driver.DriverManager;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +15,9 @@ public class BaseTest {
 
     @BeforeClass
     public void init() {
-        driverManager = DriverManager.getInstance();
-        pageTransporter = new PageTransporter();
-        loginPage = pageTransporter.navigateToLoginPage();
+//        driverManager = DriverManager.getInstance();
+//        pageTransporter = new PageTransporter();
+//        loginPage = pageTransporter.navigateToLoginPage();
     }
 
     @AfterClass
