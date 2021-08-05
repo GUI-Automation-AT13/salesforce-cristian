@@ -3,6 +3,7 @@ package salesforce.ui;
 import static core.config.Configuration.dotenv;
 
 import core.driver.DriverManager;
+import core.utils.FeaturePage;
 import salesforce.ui.pages.LoginPage;
 import salesforce.ui.pages.campaign.CampaignPage;
 
@@ -11,7 +12,8 @@ import salesforce.ui.pages.campaign.CampaignPage;
  */
 public class PageTransporter {
 
-    private String urlSalesforce = dotenv.get("URL_SALESFORCE");
+    private String urlSalesforce = dotenv.get("AUTH_URL");
+    private FeaturePage featurePage;
 
     /**
      * Got to the specified url.
@@ -30,6 +32,22 @@ public class PageTransporter {
     public CampaignPage navigateToCampaignPage() {
         goToUrl(dotenv.get("END_POINT_URL_CAMPAIGN"));
         return new CampaignPage();
+    }
+
+    /**
+     * Navigates to the Legal entities page.
+     *
+     * @return a CampaignPage.
+     */
+    public CampaignPage navigateTofeaturePage(String nameFeature) {
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
+        System.out.println(featurePage.getFeaturePage(nameFeature));
+        goToUrl(featurePage.getFeaturePage(nameFeature));
+        if (nameFeature.equals("Campaign")) {
+            return new CampaignPage();
+        }
+        return null;
     }
 
     /**

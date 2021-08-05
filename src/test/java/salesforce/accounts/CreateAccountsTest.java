@@ -1,8 +1,7 @@
-package accounts;
+package salesforce.accounts;
 
 import static core.config.Configuration.dotenv;
-
-import base.BaseTest;
+import salesforce.base.BaseTest;
 import org.testng.annotations.Test;
 import salesforce.ui.pages.HomePage;
 

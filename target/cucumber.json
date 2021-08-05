@@ -1,0 +1,249 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-08-05T18:44:24.662Z",
+        "before": [
+          {
+            "result": {
+              "duration": 24997700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignHooks.setUp()"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "create a campaign with only required fields",
+        "description": "",
+        "id": "create-an-campaign;create-a-campaign-with-only-required-fields",
+        "after": [
+          {
+            "result": {
+              "duration": 280002700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignHooks.tearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 15514597000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I login to salesforce site as an developer user",
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignSteps.iLoginToSalesforceSiteAsAnDeveloperUser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3140641300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I navigate to Campaign page",
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignSteps.iNavigateToCampaignPage()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6425708100,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I create a new campaign with required fields",
+            "match": {
+              "arguments": [
+                {
+                  "val": "campaign",
+                  "offset": 15
+                }
+              ],
+              "location": "rest.salesforce.com.steps.CampaignSteps.iCreateANewWorkTypeOnlyWithRequiredFields(java.lang.String,java.util.Map\u003cjava.lang.String, java.lang.String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Campaign Name",
+                  "New Campaign 222222"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 875761400,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I verify Campaign created with requirement fields",
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignSteps.iVerifyWorkTypeCreatedWithRequirementFields()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@CreateCampaign"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-05T18:44:50.953Z",
+        "before": [
+          {
+            "result": {
+              "duration": 4004800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignHooks.setUp()"
+            }
+          }
+        ],
+        "line": 12,
+        "name": "create a campaign with all fields",
+        "description": "",
+        "id": "create-an-campaign;create-a-campaign-with-all-fields",
+        "after": [
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.NoSuchSessionException: invalid session id\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027DESKTOP-75EOLU7\u0027, ip: \u0027192.168.33.1\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711.0.9\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\\Users\\Cristian\\AppData\\L...}, goog:chromeOptions: {debuggerAddress: localhost:62290}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 11814580a14d2a560512c88cef8fb966\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:442)\r\n\tat rest.salesforce.com.steps.CampaignHooks.tearDown(CampaignHooks.java:31)\r\n",
+              "duration": 17000300,
+              "status": "failed"
+            },
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignHooks.tearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.NoSuchSessionException: invalid session id\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027DESKTOP-75EOLU7\u0027, ip: \u0027192.168.33.1\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711.0.9\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\\Users\\Cristian\\AppData\\L...}, goog:chromeOptions: {debuggerAddress: localhost:62290}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 11814580a14d2a560512c88cef8fb966\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:857)\r\n\tat salesforce.ui.PageTransporter.goToUrl(PageTransporter.java:24)\r\n\tat salesforce.ui.PageTransporter.navigateToLoginPage(PageTransporter.java:59)\r\n\tat rest.salesforce.com.steps.CampaignSteps.iLoginToSalesforceSiteAsAnDeveloperUser(CampaignSteps.java:38)\r\n\tat ✽.I login to salesforce site as an developer user(file:///D:/GUI%20Testing/proyIndividualSalesforce2/salesforce-cristian/src/test/resources/features/campaign.feature:13)\r\n",
+              "duration": 182001600,
+              "status": "failed"
+            },
+            "line": 13,
+            "name": "I login to salesforce site as an developer user",
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignSteps.iLoginToSalesforceSiteAsAnDeveloperUser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 14,
+            "name": "I navigate to Campaign page",
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignSteps.iNavigateToCampaignPage()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 15,
+            "name": "I create a new campaign with required fields",
+            "match": {
+              "arguments": [
+                {
+                  "val": "campaign",
+                  "offset": 15
+                }
+              ],
+              "location": "rest.salesforce.com.steps.CampaignSteps.iCreateANewWorkTypeOnlyWithRequiredFields(java.lang.String,java.util.Map\u003cjava.lang.String, java.lang.String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Campaign Name",
+                  "New Campaign Created"
+                ]
+              },
+              {
+                "cells": [
+                  "Start Date",
+                  "7/24/2021"
+                ]
+              },
+              {
+                "cells": [
+                  "End Date",
+                  "8/24/2021"
+                ]
+              },
+              {
+                "cells": [
+                  "Expected Revenue in Campaign",
+                  "200"
+                ]
+              },
+              {
+                "cells": [
+                  "Budgeted Cost in Campaign",
+                  "150"
+                ]
+              },
+              {
+                "cells": [
+                  "Actual Cost in Campaign",
+                  "180"
+                ]
+              },
+              {
+                "cells": [
+                  "Num Sent in Campaign",
+                  "100"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 998500,
+              "status": "skipped"
+            },
+            "line": 23,
+            "name": "I verify Campaign created with requirement fields",
+            "match": {
+              "location": "rest.salesforce.com.steps.CampaignSteps.iVerifyWorkTypeCreatedWithRequirementFields()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@CreateCampaign"
+          }
+        ]
+      }
+    ],
+    "name": "Create an Campaign",
+    "description": "",
+    "id": "create-an-campaign",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/campaign.feature",
+    "tags": []
+  }
+]

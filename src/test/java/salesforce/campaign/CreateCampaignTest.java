@@ -1,30 +1,34 @@
-package campaign;
+package salesforce.campaign;
 
-import base.BaseTest;
+import salesforce.base.BaseTest;
 import org.testng.Assert;
 import salesforce.ui.pages.HomePage;
 import salesforce.ui.pages.campaign.CampaignCreatedPage;
 import salesforce.ui.pages.campaign.CampaignPage;
 import org.testng.annotations.Test;
-import salesforce.ui.pages.campaign.CreateCampaignPage;
+import salesforce.ui.pages.campaign.FormToCreateCampaign;
 import static core.config.Configuration.dotenv;
 
 public class CreateCampaignTest extends BaseTest {
     private HomePage homePage;
-    private CreateCampaignPage createCampaignPage;
+    private FormToCreateCampaign formToCreateCampaign;
     protected CampaignPage campaignPage;
     protected CampaignCreatedPage campaignCreatedPage;
 
     @Test
     public void testCreateCampaignWithNecesaryAttributes() {
         String campaignName = "New Campaign Created";
-        HomePage homePage = loginPage.setUserName(dotenv.get("USER"))
-                .setPassword(dotenv.get("PASSWORD")).clickLoginBtn();
+        HomePage homePage = loginPage.setUserName(dotenv.get("SALESFORCE_USERNAME"))
+                .setPassword(dotenv.get("PASSWORD_TOKEN")).clickLoginBtn();
+
+//        System.out.println("****************************");
+////        System.out.println(driver.getCurrentUrl());
+//        System.out.println(driverManager.getDriver().getCurrentUrl());
         campaignPage = pageTransporter.navigateToCampaignPage();
-        CreateCampaignPage createCampaignPage = campaignPage.clickCreateCampaignBtn();
-        createCampaignPage.setInputField("campaign name", campaignName);
-        createCampaignPage.clickActive();
-        campaignCreatedPage = createCampaignPage.clickSaveBtn();
+        FormToCreateCampaign formToCreateCampaign = campaignPage.clickCreateCampaignBtn();
+        formToCreateCampaign.setInputField("campaign name", campaignName);
+        formToCreateCampaign.clickActive();
+        campaignCreatedPage = formToCreateCampaign.clickSaveBtn();
         campaignCreatedPage.clickDetailTab();
         campaignCreatedPage.waitElementCampaignNameCreated();
         Assert.assertEquals(campaignCreatedPage.getTextAlertSuccess(), "success\nCampaign " + "\"" + campaignName + "\"" + " was created.\nClose", "Campaign was not created");
@@ -42,20 +46,20 @@ public class CreateCampaignTest extends BaseTest {
         String actualCost = "180";
         String numSent = "100";
         String description = "Description added";
-        HomePage homePage = loginPage.setUserName(dotenv.get("USER"))
-                .setPassword(dotenv.get("PASSWORD")).clickLoginBtn();
+        HomePage homePage = loginPage.setUserName(dotenv.get("SALESFORCE_USERNAME"))
+                .setPassword(dotenv.get("PASSWORD_TOKEN")).clickLoginBtn();
         campaignPage = pageTransporter.navigateToCampaignPage();
-        CreateCampaignPage createCampaignPage = campaignPage.clickCreateCampaignBtn();
-        createCampaignPage.setInputField("campaign name", campaignName);
-        createCampaignPage.clickActive();
-        createCampaignPage.setInputField("start date", startDate);
-        createCampaignPage.setInputField("end date", endDate);
-        createCampaignPage.setInputField("expected revenue in campaign", expectedRevenue);
-        createCampaignPage.setInputField("budgeted cost in campaign", budgetedCost);
-        createCampaignPage.setInputField("actual cost in campaign", actualCost);
-        createCampaignPage.setInputField("num sent in campaign", numSent);
-        createCampaignPage.setDescription(description);
-        campaignCreatedPage = createCampaignPage.clickSaveBtn();
+        FormToCreateCampaign formToCreateCampaign = campaignPage.clickCreateCampaignBtn();
+        formToCreateCampaign.setInputField("campaign name", campaignName);
+        formToCreateCampaign.clickActive();
+        formToCreateCampaign.setInputField("start date", startDate);
+        formToCreateCampaign.setInputField("end date", endDate);
+        formToCreateCampaign.setInputField("expected revenue in campaign", expectedRevenue);
+        formToCreateCampaign.setInputField("budgeted cost in campaign", budgetedCost);
+        formToCreateCampaign.setInputField("actual cost in campaign", actualCost);
+        formToCreateCampaign.setInputField("num sent in campaign", numSent);
+        formToCreateCampaign.setDescription(description);
+        campaignCreatedPage = formToCreateCampaign.clickSaveBtn();
         campaignCreatedPage.clickDetailTab();
         campaignCreatedPage.waitElementCampaignNameCreated();
         Assert.assertEquals(campaignCreatedPage.getTextAlertSuccess(), "success\nCampaign " + "\"" + campaignName + "\"" + " was created.\nClose", "Campaign was not created");
